@@ -24,6 +24,11 @@ inline void printAction(Problem::Direction action) {
     }
 }
 
+// Get nodes path cost.
+int Node::getPathCosts() {
+    return this->pathCosts;
+}
+
 // Get nodes problem.
 Problem *Node::getProblem() {
     return this->state;

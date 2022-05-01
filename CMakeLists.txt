@@ -9,7 +9,7 @@ add_executable(startingProject
         src/printUI.cpp
         src/Problem.cpp
         src/Node.cpp
-        src/uniformSearch.cpp
+        src/UniformSearch.cpp
         )
 
 # unit tests exe

@@ -31,6 +31,7 @@ public:
 
     Problem *getProblem();
     Node *childNode(Problem * problem, Node * parent, Problem::Direction action);
+    int getPathCosts();
     void solution();
 
 };
