@@ -6,6 +6,15 @@ inline void debugInput(int userInput) {
     std::cout << "USER INPUT READ: " << userInput << "\n";
 }
 
+// Quick prints for all possible moves.
+inline void debugMoves(Problem::Direction *moves) {
+    std::cout << "Possible Moves: "
+    << "UP: " << moves[0] << ", "
+    << "DOWN: " << moves[1] << ", "
+    << "LEFT: " << moves[2] << ", "
+    << "RIGHT: " << moves[3] << "\n";
+}
+
 // Main Method of the program.
 int main() {
 
@@ -36,13 +45,11 @@ int main() {
 
     // Solve Default [ 1 2 0 4 5 3 7 8 6 ]
     initProblem.printInitialState(2);
-    std::cout << "GOAL: " << initProblem.checkGoal() << "\n";
-    initProblem.move(Problem::DOWN);
-    initProblem.printInitialState(2);
-    std::cout << "GOAL: " << initProblem.checkGoal() << "\n";
-    initProblem.move(Problem::DOWN);
-    initProblem.printInitialState(2);
-    std::cout << "GOAL: " << initProblem.checkGoal() << "\n";
+    // Get all possible moves.
+    Problem::Direction moves[4];
+    initProblem.getAllMoves(moves);
+    debugMoves(moves);
+    initProblem.move(Problem::LEFT).move(Problem::DOWN).printInitialState(2);
 
     // Ask for algorithm.
 //    userInput = printUI::printStart();
