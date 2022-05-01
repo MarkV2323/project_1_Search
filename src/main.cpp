@@ -13,6 +13,8 @@ int main() {
     int userInput;
 
     // Objects
+    printUI ui;
+    Problem initProblem;
 
     // Begin program, start by introducing user and asking for type of 8 puzzle.
     userInput = printUI::printStart();
@@ -22,29 +24,39 @@ int main() {
     switch (userInput) {
         case 1:
             // Use default 8-puzzle.
+            initProblem = Problem();
             break;
         case 2:
             // Use user created 8-puzzle.
+            initProblem = printUI::enterPuzzle();
             break;
         default:
             return -1; // Something went wrong!
     }
+
+    // debug problem.
+    std::cout << "Does ";
+    initProblem.printInitialState();
+    std::cout << "Equal [ 1 2 3 4 5 6 7 8 0 ] : " << initProblem.checkGoal() << "\n";
 
     // Ask for algorithm.
-    userInput = printUI::printStart();
-    debugInput(userInput);
-
-    // Handle user decision, run algorithm with desired settings entered above.
-    switch (userInput) {
-        case 1:
-            break;
-        case 2:
-            break;
-        case 3:
-            break;
-        default:
-            return -1; // Something went wrong!
-    }
+//    userInput = printUI::printStart();
+//    debugInput(userInput);
+//
+//    // Handle user decision, run algorithm with desired settings entered above.
+//    switch (userInput) {
+//        case 1:
+//            // Run Uniform Cost Search.
+//            break;
+//        case 2:
+//            // Run A* with Misplaced Tile heuristic.
+//            break;
+//        case 3:
+//            // Run A* with Euclidean Distance heuristic.
+//            break;
+//        default:
+//            return -1; // Something went wrong!
+//    }
 
     // Program has exited.
     return 0;

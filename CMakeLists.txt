@@ -7,6 +7,7 @@ set(CMAKE_CXX_STANDARD 14)
 add_executable(startingProject
         src/main.cpp
         src/printUI.cpp
+        src/Problem.cpp
         )
 
 # unit tests exe
