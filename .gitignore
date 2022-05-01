@@ -1,0 +1,10 @@
+cmake-build-debug
+CMakeFiles/
+.idea
+.DS_Store
+CMakeCache.txt
+Makefile
+cmake_install.cmake
+exampleProject
+lib/
+test
