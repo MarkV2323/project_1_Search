@@ -1,6 +1,30 @@
 #include <iostream>
 #include "../header/printUI.h"
 #include "../header/debug.h"
+#include "../header/Node.h"
+
+void debug() {
+    // debug Problem
+    Problem initProblem = Problem();
+    //initProblem.printInitialState(1);
+    Problem::Direction moves[4];
+    initProblem.getAllMoves(moves);
+    // debugMoves(moves);
+    Problem * m1 = initProblem.move(Problem::NONE);
+    m1->printInitialState(1);
+    std::cout << "\nSTARTING NODE DEBUG!\n";
+    // debug Node, start off by handing over initProblem that doesn't move, so it gives a pointer.
+    Node *node1 = new Node(m1);
+    Node *node2 = node1->childNode(node1->getProblem(), node1, Problem::Direction::DOWN);
+    Node *node3 = node2->childNode(node2->getProblem(), node2, Problem::Direction::DOWN);
+    Node *node4 = node3->childNode(node3->getProblem(), node3, Problem::Direction::LEFT);
+    node4->solution();
+    free(node4);
+    free(node3);
+    free(node2);
+    free(node1);
+    free(m1);
+}
 
 // Main Method of the program.
 int main() {

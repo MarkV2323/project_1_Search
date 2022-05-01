@@ -36,7 +36,7 @@ private:
 
 public:
     // Directions Definition.
-    enum Direction {UP = 1, DOWN = 2, LEFT = 3, RIGHT = 4, NONE = -1};
+    enum Direction {NONE = -1, UP = 1, DOWN = 2, LEFT = 3, RIGHT = 4};
 
     // Constructors (Can build with default or passed initialState.)
     Problem();
@@ -48,7 +48,7 @@ public:
     // Transition Function
     // Should return nullptr if move is unsuccessful, otherwise return new Problem.
     // Should swap two elements of the initialState array into a copy array based on Direction argument.
-    Problem move(enum Direction);
+    Problem *move(enum Direction);
 
     // getAllMoves Function - takes in an array of the 4 moves, marks any illegal moves.
     void getAllMoves(Direction *moves);

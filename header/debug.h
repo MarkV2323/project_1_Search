@@ -1,5 +1,6 @@
 #ifndef EXAMPLEPROJECT_DEBUG_H
 #define EXAMPLEPROJECT_DEBUG_H
+
 // Quick prints for userInput.
 inline void debugInput(int userInput) {
     std::cout << "USER INPUT READ: " << userInput << "\n";

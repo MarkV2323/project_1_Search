@@ -13,10 +13,10 @@ int Problem::getPosition() {
 
 // PUBLIC:
 // Transition Function
-Problem Problem::move(Direction direction) {
+Problem* Problem::move(Direction direction) {
 
     // return problem.
-    Problem problem;
+    Problem *problem;
 
     // Make copy of initialState.
     int copyState[9] = {0, 0, 0, 0, 0, 0, 0, 0, 0};
@@ -31,6 +31,9 @@ Problem Problem::move(Direction direction) {
 
     // attempt to move.
     switch (direction) {
+        case NONE:
+            // return pointer of itself by not moving.
+            break;
         case UP:
             // check for illegal move.
             if (pos == 0 || pos == 1 || pos == 2) {
@@ -83,10 +86,11 @@ Problem Problem::move(Direction direction) {
             return nullptr;
     }
 
-    // move must have been legal and worked.
+    // move must have been legal and worked (or didn't move).
     // package a new Problem up with the copyState.
-    problem = Problem(copyState);
+    problem = new Problem(copyState);
     return problem;
+
 }
 
 // getAllMoves Function
