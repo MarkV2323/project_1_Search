@@ -34,10 +34,15 @@ int main() {
             return -1; // Something went wrong!
     }
 
-    // debug problem.
-    std::cout << "Does ";
-    initProblem.printInitialState();
-    std::cout << "Equal [ 1 2 3 4 5 6 7 8 0 ] : " << initProblem.checkGoal() << "\n";
+    // Solve Default [ 1 2 0 4 5 3 7 8 6 ]
+    initProblem.printInitialState(2);
+    std::cout << "GOAL: " << initProblem.checkGoal() << "\n";
+    initProblem.move(Problem::DOWN);
+    initProblem.printInitialState(2);
+    std::cout << "GOAL: " << initProblem.checkGoal() << "\n";
+    initProblem.move(Problem::DOWN);
+    initProblem.printInitialState(2);
+    std::cout << "GOAL: " << initProblem.checkGoal() << "\n";
 
     // Ask for algorithm.
 //    userInput = printUI::printStart();

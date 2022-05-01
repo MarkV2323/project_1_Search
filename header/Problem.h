@@ -20,19 +20,24 @@
  * 3) Blank move RIGHT
  * 4) Blank move LEFT
  *
- * We have one transition function named move, it will carry out the requested operation & return the new Problem.
+ * We have one transition function named move, it will carry out the requested operation & return true or false.
  * Problem also comes with a printState Function, and a checkGoal Function.
  *
  */
+
 class Problem {
 private:
-    // Directions Definition.
-    enum Direction {UP, DOWN, LEFT, RIGHT};
     // underlying data structures for states.
     int initialState[9] = {0, 0, 0, 0, 0, 0, 0, 0, 0};
     int goalState[9] = {1, 2, 3, 4, 5, 6, 7, 8, 0};
 
+    // getPosition Function
+    int getPosition();
+
 public:
+    // Directions Definition.
+    enum Direction {UP = 1, DOWN = 2, LEFT = 3, RIGHT = 4};
+
     // Constructors (Can build with default or passed initialState.)
     Problem();
     Problem(const int state[9]);
@@ -41,15 +46,15 @@ public:
     virtual ~Problem();
 
     // Transition Function
-    // Should return itself if move is unsuccessful, otherwise return the new problem.
+    // Should return false if move is unsuccessful, otherwise return true.
     // Should swap two elements of the initialState array based on Direction argument.
-    Problem move(Direction);
+    bool move(enum Direction);
 
     // Checks whether the initialState is equal to the goalState.
     bool checkGoal();
 
-    // Prints out the initialState to the console.
-    void printInitialState();
+    // Prints out the initialState to the console (DEFAULT version is 0).
+    void printInitialState(int ver = 0);
 
 };
 
