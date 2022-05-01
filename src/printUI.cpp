@@ -9,7 +9,7 @@ printUI::printUI() = default;
 // Destructor
 printUI::~printUI() = default;
 
-// Implement functions
+// Introduction UI
 int printUI::printStart() {
     // Print introduction to the program, ask user to pick a puzzle to solve.
     std::cout << "Welcome to mvinc006's 8 Puzzle Solver!" << "\n";
@@ -38,6 +38,7 @@ int printUI::printStart() {
     return userInput;
 }
 
+// Create Puzzle UI
 Problem printUI::enterPuzzle() {
     // return value.
     Problem problem;
@@ -76,6 +77,32 @@ Problem printUI::enterPuzzle() {
     return problem;
 }
 
+// Choose Algorithm UI
 int printUI::enterAlgorithm() {
-    return 0;
+
+    // Gather input.
+    std::cout << "Please choose from the following options,\n"
+    << "1: Uniform Cost Search\n"
+    << "2: A* with the Misplaced Tile heuristic\n"
+    << "3: A* with the Euclidean Distance heuristic\n";
+
+    int userInput = 0;
+    std::string userString;
+
+    do {
+        // getLine and convert it to integer.
+        std::getline(std::cin, userString);
+        std::stringstream sStream(userString);
+        if (sStream >> userInput) {
+            // Error statement
+            if (userInput != 1 && userInput != 2 && userInput != 3) {
+                std::cout << "ERROR: YOU CAN ONLY PICK OPTION 1, 2 or 3.\n >";
+            }
+        } else {
+            std::cout << "ERROR: THAT IS NOT A NUMBER! TRY AGAIN.\n >";
+        }
+    } while (userInput != 1 && userInput != 2 && userInput != 3);
+
+    return userInput;
+
 }
