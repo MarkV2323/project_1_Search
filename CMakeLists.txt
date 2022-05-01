@@ -4,8 +4,9 @@ ADD_SUBDIRECTORY(googletest)
 set(CMAKE_CXX_STANDARD 14)
 
 # primary exe
-add_executable(exampleProject
+add_executable(startingProject
         src/main.cpp
+        src/printUI.cpp
         )
 
 # unit tests exe
