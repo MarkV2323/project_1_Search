@@ -53,6 +53,9 @@ public:
     // getAllMoves Function - takes in an array of the 4 moves, marks any illegal moves.
     void getAllMoves(Direction *moves);
 
+    // getState Function - takes in an array of the 9 tiles (state), and maps initialState to that array.
+    void getState(int *state);
+
     // Checks whether the initialState is equal to the goalState.
     bool checkGoal();
 

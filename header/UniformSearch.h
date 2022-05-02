@@ -6,8 +6,6 @@
 #include "../header/Node.h"
 
 class UniformSearch {
-private:
-    int nodesCreated;
 public:
     UniformSearch();
     static Node* search(Problem* problem);

@@ -4,59 +4,9 @@
 #include "../header/Node.h"
 #include "../header/UniformSearch.h"
 
-void debug() {
-    // debug Problem
-    Problem initProblem = Problem();
-    //initProblem.printInitialState(1);
-    Problem::Direction moves[4];
-    initProblem.getAllMoves(moves);
-    //debugMoves(moves);
-    Problem * m1 = initProblem.move(Problem::NONE);
-    //m1->printInitialState(1);
-
-    std::cout << "\nSTARTING NODE DEBUG!\n";
-    // debug Node, start off by handing over initProblem that doesn't move, so it gives a pointer.
-    Node *node1 = new Node(m1);
-    Node *node2 = node1->childNode(node1->getProblem(), node1, Problem::Direction::DOWN);
-    Node *node3 = node2->childNode(node2->getProblem(), node2, Problem::Direction::DOWN);
-    Node *node4 = node3->childNode(node3->getProblem(), node3, Problem::Direction::LEFT);
-    // node4->solution();
-
-    std::cout << "\nSTARTING PQUEUE DEBUG!\n";
-    auto Compare = [](Node* a, Node* b) { return a->getPathCosts() > b->getPathCosts(); };
-    std::priority_queue<Node*, std::vector<Node*>, decltype(Compare)> frontier(Compare);
-    frontier.push(node4);
-    frontier.push(node2);
-    frontier.push(node1);
-    frontier.push(node1);
-    frontier.push(node3);
-    frontier.push(node4);
-    std::cout << frontier.top()->getPathCosts() << "\n";
-    frontier.pop();
-    std::cout << frontier.top()->getPathCosts() << "\n";
-    frontier.pop();
-    std::cout << frontier.top()->getPathCosts() << "\n";
-    frontier.pop();
-    std::cout << frontier.top()->getPathCosts() << "\n";
-    frontier.pop();
-    std::cout << frontier.top()->getPathCosts() << "\n";
-    frontier.pop();
-    std::cout << frontier.top()->getPathCosts() << "\n";
-    frontier.pop();
-
-
-    // frees
-    free(node4);
-    free(node3);
-    free(node2);
-    free(node1);
-    free(m1);
-}
-
 // Main Method of the program.
 int main() {
-    // debug();
-    // return 0;
+
     // Variables
     int userInput;
 
@@ -79,6 +29,9 @@ int main() {
         default:
             return -1; // Something went wrong!
     }
+    // Print puzzle back to user.
+    std::cout << "Your Puzzle: \n";
+    initProblem.printInitialState(1);
 
     // Ask for algorithm.
     userInput = printUI::enterAlgorithm();

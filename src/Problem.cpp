@@ -95,7 +95,7 @@ Problem* Problem::move(Direction direction) {
 
 // getAllMoves Function
 // CAN ACCESS DIRECTIONS IN POINTER VIA,
-// *(pointer + index) = direction[index]
+// moves[index]
 void Problem::getAllMoves(Direction *moves) {
 
     // Start by being able to move in all directions.
@@ -125,6 +125,16 @@ void Problem::getAllMoves(Direction *moves) {
         moves[3] = NONE;
     }
 
+}
+
+// getState Function
+// CAN ACCESS TILES IN POINTER VIA,
+// state[index]
+void Problem::getState(int *state) {
+    // begin mapping initialState onto state array passed in.
+    for (int i = 0; i <= 8; i++) {
+        state[i] = initialState[i];
+    }
 }
 
 // CheckGoal Function
