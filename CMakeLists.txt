@@ -10,7 +10,7 @@ add_executable(startingProject
         src/Problem.cpp
         src/Node.cpp
         src/UniformSearch.cpp
-        src/AStarSearch.cpp)
+        src/AStarSearch_misplaced.cpp header/AStarSearch_euclidean.h src/AStarSearch_euclidean.cpp)
 
 # unit tests exe
 add_executable(test

@@ -137,6 +137,13 @@ void Problem::getState(int *state) {
     }
 }
 
+void Problem::getGoalState(int *state) {
+    // begin mapping goalState onto state array passed in.
+    for (int i = 0; i <= 8; i++) {
+        state[i] = goalState[i];
+    }
+}
+
 // CheckGoal Function
 bool Problem::checkGoal() {
     for (int i = 0; i <= 8; i++) {

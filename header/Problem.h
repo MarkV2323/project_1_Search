@@ -56,6 +56,8 @@ public:
     // getState Function - takes in an array of the 9 tiles (state), and maps initialState to that array.
     void getState(int *state);
 
+    void getGoalState(int *state);
+
     // Checks whether the initialState is equal to the goalState.
     bool checkGoal();
 

@@ -54,7 +54,7 @@ void Node::solution() {
     // print info out on this node!
     std::cout << "NODE's ACTION: ";
     printAction(this->action);
-    std::cout << " | PATH-COST = " << this->pathCosts << "\n";
+    std::cout << " | DEPTH = " << this->pathCosts << "\n";
     state->printInitialState(1);
 
     // Loop through parent nodes until nullptr is reached.
@@ -65,7 +65,7 @@ void Node::solution() {
         // print info out on this node!
         std::cout << "NODE's ACTION: ";
         printAction(curNode->action);
-        std::cout << " | PATH-COST = " << curNode->pathCosts << "\n";
+        std::cout << " | DEPTH = " << curNode->pathCosts << "\n";
         curNode->state->printInitialState(1);
 
         // Move onto next parent.
