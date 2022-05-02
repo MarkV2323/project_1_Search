@@ -3,6 +3,7 @@
 #include "../header/debug.h"
 #include "../header/Node.h"
 #include "../header/UniformSearch.h"
+#include "../header/AStarSearch.h"
 
 // Main Method of the program.
 int main() {
@@ -49,9 +50,13 @@ int main() {
             break;
         case 2:
             // Run A* with Misplaced Tile heuristic.
+            solution = AStarSearch::search1(initProblem.move(Problem::NONE));
+            solution->solution();
             break;
         case 3:
             // Run A* with Euclidean Distance heuristic.
+            solution = AStarSearch::search2(initProblem.move(Problem::NONE));
+            solution->solution();
             break;
         default:
             return -1; // Something went wrong!

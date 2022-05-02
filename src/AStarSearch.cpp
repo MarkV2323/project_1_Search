@@ -1,8 +1,7 @@
 #include <iostream>
-#include "../header/UniformSearch.h"
+#include "../header/AStarSearch.h"
 // Lambda expression for frontier comparison
 auto Compare = [](Node* a, Node* b) { return a->getPathCosts() > b->getPathCosts(); };
-
 // check frontier function.
 bool checkFrontier(std::priority_queue<Node*, std::vector<Node*>, decltype(Compare)> queue, Node* checkNode) {
     // take queue, pop all nodes off and compare vs checkNode.
@@ -74,7 +73,6 @@ bool checkFrontier(std::priority_queue<Node*, std::vector<Node*>, decltype(Compa
     // return
     return checkVal;
 }
-
 // check explored function.
 bool checkExplored(std::set<Problem*> explored, Problem* checkProblem) {
 
@@ -110,11 +108,12 @@ bool checkExplored(std::set<Problem*> explored, Problem* checkProblem) {
     return checkVal;
 }
 
-// Constructor
-UniformSearch::UniformSearch() = default;
+// Constructor and Destructor
+AStarSearch::AStarSearch() = default;
+AStarSearch::~AStarSearch() = default;
 
 // Search Function
-Node* UniformSearch::search(Problem* problem) {
+Node* AStarSearch::search1(Problem* problem) {
     // init return Node
     Node* node = new Node(problem);
 
@@ -130,62 +129,27 @@ Node* UniformSearch::search(Problem* problem) {
     // our possible move list
     Problem::Direction moves[4];
 
-    // begin looping.
-    do {
-        /* choose lowest-cost node in frontier */
-        node = frontier.top();
-        frontier.pop();
-
-        /* perform a goal test on this node */
-        if (node->getProblem()->checkGoal()) {
-            // print quick stats on search.
-            std::cout << "Total Nodes created during Search: " << nodesCreated << "\n";
-            std::cout << "Max Size of priority queue at any time: " << maxQueueSize << "\n";
-            // return solution node.
-            return node;
-        }
-
-        /* add node's problem to explored nodes */
-        explored.insert(node->getProblem());
-
-        /* for each loop based on possible moves.*/
-        node->getProblem()->getAllMoves(moves);
-        for (Problem::Direction move : moves) {
-            if (move == -1) {
-                continue; // Skip this illegal move.
-            }
-
-            Node* child;
-            if (move == 1) {
-                // UP act
-                child = node->childNode(node->getProblem(), node, Problem::UP);
-            } else if (move == 2) {
-                // DOWN act
-                child = node->childNode(node->getProblem(), node, Problem::DOWN);
-            } else if (move == 3) {
-                // LEFT act
-                child = node->childNode(node->getProblem(), node, Problem::LEFT);
-            } else if (move == 4) {
-                // RIGHT act
-                child = node->childNode(node->getProblem(), node, Problem::RIGHT);
-            }
-
-            // TODO: Check if this child is in explored or frontier
-            if (!checkFrontier(frontier, child) && !checkExplored(explored, child->getProblem())) {
-                frontier.push(child); // Push child as it's not in frontier or explored.
-                // statics
-                nodesCreated++;
-                if (frontier.size() > maxQueueSize) {
-                    maxQueueSize = frontier.size();
-                }
-            } // child.state in frontier with higher path cost handled in checkFrontier function itself!
-
-            // std::cout << "MOVE: " << move << "\n";
-        }
-//        std::cout << "Total Nodes created during Search: " << nodesCreated << "\n";
-//        std::cout << "Max Size of priority queue at any time: " << maxQueueSize << "\n";
-    } while (!frontier.empty()); // If frontier empty => return failure (nullptr)
 
     return nullptr;
 }
 
+// Search Function
+Node* AStarSearch::search2(Problem* problem) {
+    // init return Node
+    Node* node = new Node(problem);
+
+    // init frontier with node as the only element.
+    std::priority_queue<Node*, std::vector<Node*>, decltype(Compare)> frontier(Compare);
+    frontier.push(node);
+    int nodesCreated = 1;
+    int maxQueueSize = 1;
+
+    // init empty set.
+    std::set<Problem*> explored;
+
+    // our possible move list
+    Problem::Direction moves[4];
+
+
+    return nullptr;
+}
